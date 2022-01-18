@@ -5,8 +5,8 @@ on:
         branches: 
           # master为你需要编译的当前固件的分支
           - master
-      #schedule:
-       # - cron: 0 20 * * *
+      # schedule:
+       #  - cron: 0 20 * * *
       # release:
       #   types: [published]
 
@@ -81,12 +81,12 @@ jobs:
               # 
               # 编译x64固件:
               cat >> .config <<EOF
-              #CONFIG_TARGET_x86=y
-              #CONFIG_TARGET_x86_64=y
-              #CONFIG_TARGET_x86_64_Generic=y
+              # CONFIG_TARGET_x86=y
+              # CONFIG_TARGET_x86_64=y
+              # CONFIG_TARGET_x86_64_Generic=y
               CONFIG_TARGET_ramips=y
               CONFIG_TARGET_ramips_mt7620a=y
-              CONFIG_TARGET_ramips_mt7620a=y
+              # CONFIG_TARGET_ramips_mt7620a=y
               EOF
               # 固件压缩, 编译ext4格式固件
                         # 注意如果选的插件数目多，CONFIG_TARGET_ROOTFS_PARTSIZE要设置大一些
