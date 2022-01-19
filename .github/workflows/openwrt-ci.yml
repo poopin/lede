@@ -9,10 +9,21 @@
 name: OpenWrt-CI
 
 on:
+# 编辑任意指定文件触发开始编译
+  #  push:
+  # branches:
+  #   - master
+  # paths:
+  #   - '开启编译'
+
+  # 点☆Star触发开始编译
+    watch:
+      types: started
+
   # schedule:
   #   - cron: 0 20 * * *
-  release:
-    types: [published]
+  # release:
+  #   types: [published]
 
 jobs:
 
@@ -51,8 +62,8 @@ jobs:
 
       - name: Generate configuration file
         run: |
-          rm -f ./.config*
-          touch ./.config     
+          # rm -f ./.config*
+          # touch ./.config     
 
           # ========================固件定制部分========================
           # 
@@ -197,7 +208,7 @@ jobs:
           # 
           # ========================固件定制部分结束========================
      
-          sed -i 's/^[ \\t]*//g' ./.config  
+          # sed -i 's/^[ \\t]*//g' ./.config  
           make defconfig
 
       - name: Make download
