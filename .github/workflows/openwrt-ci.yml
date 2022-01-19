@@ -100,11 +100,11 @@ jobs:
           EOF
           # 固件压缩, 编译ext4格式固件
                     # 注意如果选的插件数目多，CONFIG_TARGET_ROOTFS_PARTSIZE要设置大一些
-          cat >> .config <<EOF
-          CONFIG_TARGET_ROOTFS_EXT4FS=y
-          CONFIG_TARGET_IMAGES_GZIP=y
-          CONFIG_TARGET_ROOTFS_PARTSIZE=800
-          EOF
+          # cat >> .config <<EOF
+          # CONFIG_TARGET_ROOTFS_EXT4FS=y
+          # CONFIG_TARGET_IMAGES_GZIP=y
+          # CONFIG_TARGET_ROOTFS_PARTSIZE=800
+          # EOF
           
           # 编译UEFI固件:
           # cat >> .config <<EOF
