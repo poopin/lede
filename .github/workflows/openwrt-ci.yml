@@ -49,9 +49,8 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: |
-          
-          #
+         run: |
+     
           # ========================固件定制部分========================
           # 
           # 
@@ -194,7 +193,7 @@ jobs:
           # EOF
           # 
           # ========================固件定制部分结束========================
-          #
+     
       
           make defconfig
 
