@@ -59,12 +59,10 @@ jobs:
           sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-
       - name: Generate configuration file
         run: |
           # rm -f ./.config*
           # touch ./.config     
-
           # ========================固件定制部分========================
           # 
           # 
@@ -101,9 +99,9 @@ jobs:
           # 固件压缩, 编译ext4格式固件
                     # 注意如果选的插件数目多，CONFIG_TARGET_ROOTFS_PARTSIZE要设置大一些
           cat >> .config <<EOF
-          # CONFIG_TARGET_ROOTFS_EXT4FS=y
+          CONFIG_TARGET_ROOTFS_EXT4FS=y
           CONFIG_TARGET_IMAGES_GZIP=y
-          # CONFIG_TARGET_ROOTFS_PARTSIZE=800
+          CONFIG_TARGET_ROOTFS_PARTSIZE=800
           EOF
           
           # 编译UEFI固件:
@@ -118,14 +116,14 @@ jobs:
           EOF
           
           # 多文件系统支持:
-          cat >> .config <<EOF
+          # cat >> .config <<EOF
           # CONFIG_PACKAGE_kmod-fs-nfs=y
           # CONFIG_PACKAGE_kmod-fs-nfs-common=y
           # CONFIG_PACKAGE_kmod-fs-nfs-v3=y
           # CONFIG_PACKAGE_kmod-fs-nfs-v4=y
-          CONFIG_PACKAGE_kmod-fs-ntfs=y
+          # CONFIG_PACKAGE_kmod-fs-ntfs=y
           # CONFIG_PACKAGE_kmod-fs-squashfs=y
-          EOF
+          # EOF
           
           # USB3.0支持:
           # cat >> .config <<EOF
@@ -138,13 +136,13 @@ jobs:
           
           # 常用LuCI插件选择, 主要定制passwall与ssr-plus
           cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-app-adbyby-plus=y
-          CONFIG_PACKAGE_luci-app-aria2=y
+          # CONFIG_PACKAGE_luci-app-adbyby-plus=y
+          # CONFIG_PACKAGE_luci-app-aria2=y
           # CONFIG_PACKAGE_luci-app-baidupcs-web=y
           # CONFIG_PACKAGE_luci-app-docker=y
           # CONFIG_PACKAGE_luci-app-frpc=y
-          CONFIG_PACKAGE_luci-app-kodexplorer=y
-          CONFIG_PACKAGE_luci-app-minidlna=y
+          # CONFIG_PACKAGE_luci-app-kodexplorer=y
+          # CONFIG_PACKAGE_luci-app-minidlna=y
           CONFIG_PACKAGE_luci-app-openvpn=y
           CONFIG_PACKAGE_luci-app-openvpn-server=y
           CONFIG_PACKAGE_luci-app-passwall=y
@@ -186,7 +184,7 @@ jobs:
           CONFIG_PACKAGE_luci-theme-argon-dark-mod=y
           CONFIG_PACKAGE_luci-theme-argon-light-mod=y
           CONFIG_PACKAGE_luci-theme-material=y
-          CONFIG_PACKAGE_luci-theme-netgear=y
+          # CONFIG_PACKAGE_luci-theme-netgear=y
           EOF
           
           # 常用软件包:
