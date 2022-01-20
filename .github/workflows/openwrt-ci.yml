@@ -96,15 +96,15 @@ jobs:
           cat >> .config <<EOF
           CONFIG_TARGET_ramips=y
           CONFIG_TARGET_ramips_mt7620a=y
-          CONFIG_TARGET_ramips_mt7620a_Y1S=y
+          CONFIG_TARGET_ramips_mt7620a_DEVICE_lenovo_newifi-y1s=y
           EOF
           # 固件压缩, 编译ext4格式固件
                     # 注意如果选的插件数目多，CONFIG_TARGET_ROOTFS_PARTSIZE要设置大一些
-          # cat >> .config <<EOF
+          cat >> .config <<EOF
           # CONFIG_TARGET_ROOTFS_EXT4FS=y
-          # CONFIG_TARGET_IMAGES_GZIP=y
+          CONFIG_TARGET_IMAGES_GZIP=y
           # CONFIG_TARGET_ROOTFS_PARTSIZE=800
-          # EOF
+          EOF
           
           # 编译UEFI固件:
           # cat >> .config <<EOF
@@ -119,12 +119,12 @@ jobs:
           
           # 多文件系统支持:
           cat >> .config <<EOF
-          CONFIG_PACKAGE_kmod-fs-nfs=y
-          CONFIG_PACKAGE_kmod-fs-nfs-common=y
-          CONFIG_PACKAGE_kmod-fs-nfs-v3=y
-          CONFIG_PACKAGE_kmod-fs-nfs-v4=y
+          # CONFIG_PACKAGE_kmod-fs-nfs=y
+          # CONFIG_PACKAGE_kmod-fs-nfs-common=y
+          # CONFIG_PACKAGE_kmod-fs-nfs-v3=y
+          # CONFIG_PACKAGE_kmod-fs-nfs-v4=y
           CONFIG_PACKAGE_kmod-fs-ntfs=y
-          CONFIG_PACKAGE_kmod-fs-squashfs=y
+          # CONFIG_PACKAGE_kmod-fs-squashfs=y
           EOF
           
           # USB3.0支持:
@@ -140,8 +140,8 @@ jobs:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-adbyby-plus=y
           CONFIG_PACKAGE_luci-app-aria2=y
-          CONFIG_PACKAGE_luci-app-baidupcs-web=y
-          CONFIG_PACKAGE_luci-app-docker=y
+          # CONFIG_PACKAGE_luci-app-baidupcs-web=y
+          # CONFIG_PACKAGE_luci-app-docker=y
           CONFIG_PACKAGE_luci-app-frpc=y
           CONFIG_PACKAGE_luci-app-kodexplorer=y
           CONFIG_PACKAGE_luci-app-minidlna=y
