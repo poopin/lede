@@ -56,6 +56,19 @@ jobs:
           df -h
       - name: Update feeds
         run: |
+          # 添加kenzok8插件包源和依赖
+          # sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' ./feeds.conf.default
+          # sed -i '$a src-git small https://github.com/kenzok8/small' ./feeds.conf.default
+
+          # 添加https://github.com/fw876/helloworld源
+          sed -i '$a src-git helloworld https://github.com/fw876/helloworld' ./feeds.conf.default
+
+          # 添加https://github.com/xiaorouji/openwrt-passwall源
+          sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' ./feeds.conf.default	
+
+          # 添加https://github.com/jerrykuku/openwrt-package源，vssr插件和luci-theme-argon 
+          sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' ./feeds.conf.default
+
           # sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -151,9 +164,9 @@ jobs:
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR=y
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_socks=y
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_socks=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray=y
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=y
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=y
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_haproxy=y
           # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
@@ -177,12 +190,14 @@ jobs:
           CONFIG_PACKAGE_luci-app-webadmin=y
           CONFIG_PACKAGE_luci-app-wireguard=y
           CONFIG_PACKAGE_luci-app-wrtbwmon=y
+          CONFIG_PACKAGE_luci-app-vssr=y
           EOF
           
           # LuCI主题:
           cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-theme-argon-dark-mod=y
-          CONFIG_PACKAGE_luci-theme-argon-light-mod=y
+          CONFIG_PACKAGE_luci-theme-argon=y         
+          # CONFIG_PACKAGE_luci-theme-argon-dark-mod=y
+          # CONFIG_PACKAGE_luci-theme-argon-light-mod=y
           # CONFIG_PACKAGE_luci-theme-material=y
           # CONFIG_PACKAGE_luci-theme-netgear=y
           EOF
