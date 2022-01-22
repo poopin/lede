@@ -20,6 +20,7 @@ on:
   #  watch:
   #    types: started
   
+  # 手动触发
   workflow_dispatch:
 
   # schedule:
