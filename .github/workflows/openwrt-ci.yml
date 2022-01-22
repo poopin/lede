@@ -81,8 +81,8 @@ jobs:
           ./scripts/feeds install -a
       - name: Generate configuration file
         run: |
-          # rm -f ./.config*
-          # touch ./.config     
+          rm -f ./.config*
+          touch ./.config     
           # ========================固件定制部分========================
           # 
           # 
@@ -160,9 +160,9 @@ jobs:
           # CONFIG_PACKAGE_luci-app-aria2=y
           # CONFIG_PACKAGE_luci-app-baidupcs-web=y
           # CONFIG_PACKAGE_luci-app-docker=y
-          # CONFIG_PACKAGE_luci-app-frpc=y
+          CONFIG_PACKAGE_luci-app-frpc=y
           # CONFIG_PACKAGE_luci-app-kodexplorer=y
-          # CONFIG_PACKAGE_luci-app-minidlna=y
+          CONFIG_PACKAGE_luci-app-minidlna=y
           # CONFIG_PACKAGE_luci-app-openvpn=y
           # CONFIG_PACKAGE_luci-app-openvpn-server=y
           CONFIG_PACKAGE_luci-app-passwall=y
@@ -216,7 +216,7 @@ jobs:
           CONFIG_PACKAGE_nano=y
           CONFIG_PACKAGE_screen=y
           CONFIG_PACKAGE_tree=y
-          # CONFIG_PACKAGE_vim-fuller=y
+          CONFIG_PACKAGE_vim-fuller=y
           CONFIG_PACKAGE_wget=y
           EOF
           
@@ -228,7 +228,7 @@ jobs:
           # 
           # ========================固件定制部分结束========================
      
-          # sed -i 's/^[ \\t]*//g' ./.config  
+          sed -i 's/^[ \\t]*//g' ./.config  
           make defconfig
 
       - name: Make download
