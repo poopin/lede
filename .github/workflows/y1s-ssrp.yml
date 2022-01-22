@@ -17,8 +17,11 @@ on:
   #   - '开启编译'
 
   # 点☆Star触发开始编译
-    watch:
-      types: started
+  #  watch:
+  #    types: started
+  
+  # 手动触发
+  workflow_dispatch:
 
   # schedule:
   #   - cron: 0 20 * * *
