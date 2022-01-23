@@ -64,21 +64,25 @@ jobs:
           # sed -i '$a src-git small https://github.com/kenzok8/small' ./feeds.conf.default
           # 添加kenzok8的自动更新插件包源
           sed -i '$a src-git smallpackage https://github.com/kenzok8/small-package' ./feeds.conf.default
+
           # 添加https://github.com/fw876/helloworld源 ssr plus插件
           # sed -i '$a src-git helloworld https://github.com/fw876/helloworld' ./feeds.conf.default
+
           # 添加https://github.com/xiaorouji/openwrt-passwall源 passwall插件
           # sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' ./feeds.conf.default	
+
           # 添加https://github.com/jerrykuku/openwrt-package源，vssr插件和luci-theme-argon 
           # sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' ./feeds.conf.default
           
           
+
           # sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       - name: Generate configuration file
         run: |
-          # rm -f ./.config*
-          # touch ./.config     
+          rm -f ./.config*
+          touch ./.config     
           # ========================固件定制部分========================
           # 
           # 
@@ -111,10 +115,10 @@ jobs:
           CONFIG_TARGET_ramips=y
           CONFIG_TARGET_ramips_mt7620=y
           CONFIG_TARGET_ramips_mt7620_DEVICE_lenovo_newifi-y1s=y
-          # CONFIG_TESTING_KERNEL=y
+          CONFIG_TESTING_KERNEL=y
           EOF
           # 固件压缩, 编译ext4格式固件
-                    # 注意如果选的插件数目多，CONFIG_TARGET_ROOTFS_PARTSIZE要设置大一些
+          # 注意如果选的插件数目多，CONFIG_TARGET_ROOTFS_PARTSIZE要设置大一些
           cat >> .config <<EOF
           # CONFIG_TARGET_ROOTFS_EXT4FS=y
           CONFIG_TARGET_IMAGES_GZIP=y
@@ -157,27 +161,27 @@ jobs:
           # CONFIG_PACKAGE_luci-app-aria2=y
           # CONFIG_PACKAGE_luci-app-baidupcs-web=y
           # CONFIG_PACKAGE_luci-app-docker=y
-          CONFIG_PACKAGE_luci-app-frpc=y
+          # CONFIG_PACKAGE_luci-app-frpc=y
           # CONFIG_PACKAGE_luci-app-kodexplorer=y
-          CONFIG_PACKAGE_luci-app-minidlna=y
+          # CONFIG_PACKAGE_luci-app-minidlna=y
           # CONFIG_PACKAGE_luci-app-openvpn=y
           # CONFIG_PACKAGE_luci-app-openvpn-server=y
           CONFIG_PACKAGE_luci-app-passwall=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ipt2socks=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_socks=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_socks=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_haproxy=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_pdnsd=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_dns2socks=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=y
-          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ipt2socks=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_socks=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_socks=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_haproxy=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_pdnsd=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_dns2socks=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=y
+          # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=y
           # CONFIG_PACKAGE_luci-app-qbittorrent=y
           CONFIG_PACKAGE_luci-app-ssr-plus=y
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
@@ -213,7 +217,7 @@ jobs:
           CONFIG_PACKAGE_nano=y
           CONFIG_PACKAGE_screen=y
           CONFIG_PACKAGE_tree=y
-          CONFIG_PACKAGE_vim-fuller=y
+          # CONFIG_PACKAGE_vim-fuller=y
           CONFIG_PACKAGE_wget=y
           EOF
           
@@ -225,7 +229,7 @@ jobs:
           # 
           # ========================固件定制部分结束========================
      
-          # sed -i 's/^[ \\t]*//g' ./.config  
+          sed -i 's/^[ \\t]*//g' ./.config  
           make defconfig
 
       - name: Make download
